@@ -1,0 +1,52 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: 'Cloudwatch alarm to Slack.'
+Parameters:
+  SnsTopicName:
+    Type: String
+    Default: 'xxx-alerm-topic'
+  SlackBotToken:
+    Type: String
+    Default: 'xxx-999-999-xxx'
+  SlackChannel:
+    Type: String
+    Default: '#notify_xxx_alerm'
+
+Resources:
+  NotifyFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs8.10
+      Role: !GetAtt NotifyRole.Arn
+      CodeUri: .
+      Description: 'Cloudwatch alarm to Slack.'
+      MemorySize: 128
+      Timeout: 300
+      Environment:
+        Variables:
+          SLACK_BOT_TOKEN: !Ref SlackBotToken
+          SLACK_CHANNEL: !Ref SlackChannel
+      Events:
+        SNS:
+          Type: SNS
+          Properties:
+            Topic: !Ref NotifyTopic
+  NotifyTopic:
+    Type: 'AWS::SNS::Topic'
+    Properties:
+      TopicName: !Ref SnsTopicName
+  NotifyRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: 'sts:AssumeRole'
+      ManagedPolicyArns:
+        - 'arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'
+        - 'arn:aws:iam::aws:policy/AmazonSNSReadOnlyAccess'
+        - 'arn:aws:iam::aws:policy/CloudWatchReadOnlyAccess'
