@@ -26,7 +26,7 @@ CloudWatch アラーム を Slack へ通知します。
 
     | Argument | Example | Description |
     |---|---|---|
-    | --s3-bucket | xxx-bucket-sam | そーす等（アーティファクト）をアップロードするバケット |
+    | --s3-bucket | xxx-bucket-sam | ソース等（アーティファクト）をアップロードするバケット |
 
     ```
     aws cloudformation package --template-file template.yml --output-template-file serverless-output.yaml --s3-bucket xxx-bucket-sam
