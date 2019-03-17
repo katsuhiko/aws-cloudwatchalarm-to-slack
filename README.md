@@ -1,4 +1,4 @@
-# cloudwatchalerm-to-slack
+# cloudwatchalarm-to-slack
 
 CloudWatch アラーム を Slack へ通知します。
 
@@ -36,15 +36,15 @@ CloudWatch アラーム を Slack へ通知します。
 
     | Argument | Example | Description |
     |---|---|---|
-    | SnsTopicName  | xxx-alerm-topic   | アラームを通知する SNS トピック名 |
+    | SnsTopicName  | xxx-alarm-topic   | アラームを通知する SNS トピック名 |
     | SlackBotToken | xxx-999-999-xxx   | Slack Bot のトークン |
-    | SlackChannel  | #notify_xxx_alerm | アラームを通知する Slack のチャンネル |
+    | SlackChannel  | #notify_xxx_alarm | アラームを通知する Slack のチャンネル |
 
     ```
-    aws cloudformation deploy --template-file serverless-output.yaml --stack-name cloudwatchalerm-to-slack --capabilities CAPABILITY_IAM --region ap-northeast-1 \
-    --parameter-overrides "SnsTopicName=xxx-alerm-topic" "SlackBotToken=xxx-999-999-xxx" "SlackChannel=#notify_xxx_alerm"
+    aws cloudformation deploy --template-file serverless-output.yaml --stack-name cloudwatchalarm-to-slack --capabilities CAPABILITY_IAM --region ap-northeast-1 \
+    --parameter-overrides "SnsTopicName=xxx-alarm-topic" "SlackBotToken=xxx-999-999-xxx" "SlackChannel=#notify_xxx_alarm"
     ```
 
 ## デプロイ後の作業
 
-CloudWatch Alerm と結びつけます。
+CloudWatch Alarm と結びつけます。

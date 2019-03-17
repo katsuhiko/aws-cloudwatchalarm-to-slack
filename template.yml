@@ -4,13 +4,13 @@ Description: 'Cloudwatch alarm to Slack.'
 Parameters:
   SnsTopicName:
     Type: String
-    Default: 'xxx-alerm-topic'
+    Default: 'xxx-alarm-topic'
   SlackBotToken:
     Type: String
     Default: 'xxx-999-999-xxx'
   SlackChannel:
     Type: String
-    Default: '#notify_xxx_alerm'
+    Default: '#notify_xxx_alarm'
 
 Resources:
   NotifyFunction:

@@ -70,7 +70,7 @@ async function sendSlackBot(records) {
     const image = await getMetricsGraphFromCloudWatch(message)
 
     // to stream from buffer
-    const file = '/tmp/' + uuidv4() + '-alerm.png'
+    const file = '/tmp/' + uuidv4() + '-alarm.png'
     fs.writeFileSync(file, image)
     const streamImage = fs.createReadStream(file)
 

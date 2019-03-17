@@ -1,5 +1,5 @@
 {
-  "name": "aws-cloudwatchalerm-to-slack",
+  "name": "aws-cloudwatchalarm-to-slack",
   "version": "0.0.1",
   "description": "Cloudwatch alarm to Slack.",
   "main": "index.js",
@@ -7,7 +7,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/katsuhiko/aws-cloudwatchalerm-to-slack.git"
+    "url": "git://github.com/katsuhiko/aws-cloudwatchalarm-to-slack.git"
   },
   "scripts": {},
   "dependencies": {
